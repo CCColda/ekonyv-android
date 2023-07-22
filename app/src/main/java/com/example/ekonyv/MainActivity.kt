@@ -11,14 +11,19 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ekonyv.data.AppDatabase
 import com.example.ekonyv.databinding.ActivityMainBinding
+import com.example.ekonyv.network.ServerManager
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
+    lateinit var database: AppDatabase
+    lateinit var serverManager: ServerManager
     override fun onCreate(savedInstanceState: Bundle?) {
+        database = AppDatabase.build(this)
+        serverManager = ServerManager(database.serverPreferenceDao())
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

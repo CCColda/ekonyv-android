@@ -16,7 +16,7 @@ import java.net.URL
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-internal const val LOG_TAG = "Fetch"
+private const val LOG_TAG = "Fetch"
 
 enum class FetchMethod(val str: String) {
     GET("GET"),
@@ -27,40 +27,42 @@ enum class FetchMethod(val str: String) {
 class FetchResult (
     conn: HttpURLConnection
 ) {
-    private val stream: InputStream = conn.inputStream
-
     val statusCode: Number = conn.responseCode
     val statusMessage: String = conn.responseMessage
     val headers: Map<String, List<String>> = conn.headerFields
-    private var _text: String? = null
+    val body: String
 
-    fun body(): String? {
-        if (_text != null)
-            return _text;
-
-        try {
-            BufferedReader(InputStreamReader(stream)).use {
-                _text = it.readText()
-                return _text
-            }
-        } catch (exc: IOException) {
-            return null
-        }
+    init {
+        val reader = BufferedReader(InputStreamReader(conn.inputStream))
+        body = reader.readText()
+        reader.close()
     }
 
-    fun csv(): Sequence<Sequence<String>> {
-        val text = body() ?: return sequenceOf()
-
-        return text.splitToSequence(NEWLINE_REGEXP).map{ line ->
+    fun csv_seq(): Sequence<Sequence<String>> {
+        return body.splitToSequence(NEWLINE_REGEXP).map{ line ->
             CSV_REGEXP.findAll(line).map {match->
                 match.groupValues[0]
             }
         }
     }
 
+    fun csv(): List<List<String>> {
+        return body.split(NEWLINE_REGEXP).map{ line ->
+            val result = mutableListOf<String>()
+            var match = CSV_REGEXP.find(line)
+
+            while (match != null) {
+                result.add(match.groupValues[1])
+                match = match.next()
+            }
+
+            result
+        }
+    }
+
     companion object {
-        private val CSV_REGEXP = Regex(pattern = "/(?:\"[^\"]*\"|[^,]*?),/gm")
-        private val NEWLINE_REGEXP = Regex(pattern = "/(?:\r\n|\n)/g");
+        private val NEWLINE_REGEXP = "\r\n|\n".toRegex();
+        private val CSV_REGEXP = "(\"[^\"]*?\"|[^\"]*?)(?:,|$)".toRegex();
     }
 }
 

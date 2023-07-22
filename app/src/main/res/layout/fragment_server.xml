@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.server.ServerFragment">
+    android:layout_marginStart="@dimen/list_side_margin"
+    android:layout_marginEnd="@dimen/list_side_margin"
+    android:gravity="start"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    android:divider="@drawable/empty_tall_divider"
+    tools:context=".ui.server.ServerFragment"
+    android:id="@+id/server_fragment">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Állapot: %1$s"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="83dp" />
+        android:id="@+id/sf_status"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:text="@string/sf_status_disconnected"
+        android:textSize="20sp" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/connect_to_server_container"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/sf_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/sf_connect_to_server"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -2,20 +2,19 @@
     <string name="app_name">EKönyv</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_server">Szerver</string>
-
-    <string name="menu_home">Home</string>
     <string name="menu_books">Könyvek</string>
     <string name="menu_user">Felhasználó</string>
-    <string name="connected_to_server">Csatlakozva:\n%1$s</string>
-    <string name="disconnected">Offline</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="ip_address_input">IP-cím...</string>
-    <string name="search_ip_address">Keresés</string>
+    <string name="nhf_connected_to_server">Csatlakozva:\n%1$s</string>
+    <string name="nhf_disconnected">Offline</string>
+    <string name="ctsf_ip_address_input">IP-cím...</string>
+    <string name="ctsf_search_ip_address">Keresés</string>
+    <string name="ctsf_save_server_preference">Mentés a keresési címek közé</string>
+    <string name="sf_toggle_connect">Csatlakozás IP-címhez</string>
+    <string name="sf_status_disconnected">Nincs kapcsolat</string>
+    <string name="sf_status_connected">Csatlakozva: %1$s</string>
+    <string name="sf_info">Szerver: %1$s (%2$s)</string>
 </resources>

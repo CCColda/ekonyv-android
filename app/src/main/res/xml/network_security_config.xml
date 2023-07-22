@@ -4,5 +4,6 @@
         <!-- todo: remove -->
         <domain includeSubdomains="false">example.com</domain>
         <domain includeSubdomains="false">ekonyv.mooo.com</domain>
+        <domain includeSubdomains="false">192.168.0.200</domain>
     </domain-config>
 </network-security-config>
