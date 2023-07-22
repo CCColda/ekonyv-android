@@ -12,6 +12,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_books">Könyvek</string>
     <string name="menu_user">Felhasználó</string>
-    <string name="connected_to_server">Csatlakozva:\n%s</string>
+    <string name="connected_to_server">Csatlakozva:\n%1$s</string>
     <string name="disconnected">Offline</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ip_address_input">IP-cím...</string>
+    <string name="search_ip_address">Keresés</string>
 </resources>

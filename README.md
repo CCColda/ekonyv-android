@@ -4,6 +4,8 @@ frontendje. Biztosítja a felhasználókezelést, könyvek hozzáadását, ISBN-
 és lekérdezést a NEKTÁR szervereiről.
 
 ## Roadmap
+- [x] HTTP-lekérdezések
+- [ ] Adatok tárolása helyileg
 - [ ] IP-cím kezelés
   - [ ] Szerver kiválasztása (felhasználói IP-cím)
   - [ ] Szerver keresése helyi hálózaton
